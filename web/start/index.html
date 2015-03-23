@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Ember Starter Kit</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+</head>
+<body>
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <img alt="NewsBlogs" src="">
+      </a>
+    </div>
+  </div>
+</nav>
+<script type="text/x-handlebars" id="components/welcome">
+  <div>
+  <div>Component</div>
+  <hr/>
+  
+   </div>
+     
+  </script>
+  <script type="text/x-handlebars" id="item">
+  <div>
+  
+  <div class="jumbotron">
+<h3>{{model.title}}</h3>
+  <p>{{model.about}}</p>
+  
+  <div>
+  {{#link-to 'index' class="btn btn-default"}}Back{{/link-to}}
+  {{#link-to 'edit' model.id class="btn btn-default"}}Edit{{/link-to}}
+   </div>
+     
+  </script>
+  
+  <script type="text/x-handlebars" id="edit">
+  
+  <h3>Edit</h3>
+  <div class="form-group">
+  {{input value=model.title }}
+  </div>
+  <div class="form-group">
+  {{textarea value=model.about cols="80" rows="6"}}
+  </div>
+  <div class="form-group">
+  
+   {{input type="checkbox" action="edit"  checked="isfFlag"  }}
+  </div>
+  
+  {{#if isAgree}}
+ 
+  <button class="btn" {{action 'edit'}}>Update</button>
+  {{/if}}
+  <hr/>
+  {{#link-to 'index' class="btn btn-default"}}Back{{/link-to}}
+   </div>
+     
+  </script>
+  <script type="text/x-handlebars" >
+    <p>Welcome</p>
+    {{outlet}}
+</script>
+  <script type="text/x-handlebars" data-template-name="index">
+    {{welcome}}
+     
+      <div class="container">
+    
+    <button class="btn" {{action 'sort' 'title'}}>title</button>
+     <button class="btn" {{action 'sort' 'about'}}>topic</button>
+     Filter:{{input value=filter placeholder='title'}}
+    <hr/>
+   
+    {{#each news in  Filtertitle}}
+  <div class="jumbotron">
+<h3>{{news.title}}</h3>
+  <p>{{news.about}}</p>
+  
+  <div>
+       {{#link-to 'item' news.id class="btn btn-default"}} Read more{{/link-to}}
+         {{#link-to 'edit' news.id class="btn btn-default"}}Edit{{/link-to}}
+      </div>
+    
+</div>
+   
+     
+    {{/each}}
+     
+           
+ 
+   
+    </div>
+    
+    {{debugger}} 
+  </script>
+  
+
+
+  <script src="js/libs/jquery-1.10.2.js"></script>
+  <script src="js/libs/handlebars-v2.0.0.js"></script>
+  <script src="js/libs/ember-1.9.1.js"></script>
+  <script src="js/libs/ember-data.min2.js"></script>
+  <script src="js/app.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<!--   to activate the test runner, add the "?test" query string parameter 
+  <script src="tests/runner.js"></script>-->
+  
+</body>
+</html>

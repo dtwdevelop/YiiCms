@@ -1,0 +1,33 @@
+  {{itemss}}
+
+<div class="container-fluid">
+            <div class="row">
+        <div ng-repeat="(newsId,news) in items">
+        <ul>
+        <li>{{news.title}}</li>
+        
+         <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">See more</button>
+<!--         <a  class="btn btn-default" ng-click="update = !update">Update</a>-->
+          <a  class="btn btn-default" ng-click="update = !update">Update</a>
+           <a  class="btn btn-default" ng-click="deletePost(news.id)">Delete</a>
+        <div collapse="isCollapsed">
+		<div class="well well-lg"><h3>{{news.title}}</h3>
+                 <p>{{news.post}}</p>
+                </div> 
+	</div>
+         
+         <div collapse="update" class="panel-title">
+             <form novalidate >
+                 <ul>
+                     <li>  <input type="text" ng-model="news.title" /></li>
+                     
+                     <li><textarea cols="70" ng-model="news.post"></textarea></li>
+                      <button class="btn btn-default" ng-click="saveNews(news)">Save</button>
+                 <ul>
+             </form>
+	</div>
+              
+         </div> 
+        </ul>
+        </div>
+                </div>

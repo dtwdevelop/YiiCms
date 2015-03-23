@@ -1,0 +1,9 @@
+git add -A
+git commit -m "yii2"
+git push
+
+ Root User: adminnIAz3rd
+   Root Password: Uqf_vTrC9eaf
+
+
+G:\Xamp\basic\vendor\bin apidoc api source/directory ./output

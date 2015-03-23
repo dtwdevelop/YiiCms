@@ -1,0 +1,4 @@
+php_value xdebug.remote_host=192.168.?.?
+php_value xdebug.remote_port=9000
+
+http://your-website.example.com/index.php?XDEBUG_SESSION_START=1
