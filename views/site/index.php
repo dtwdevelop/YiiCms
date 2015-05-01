@@ -5,7 +5,7 @@ use yii\bootstrap\Modal;
 $this->title = 'My Yii Application';
 ?>
 <?php echo $test;  ?>
-<div class="site-index">
+<div class="site-index well">
 
     <div class="jumbotron">
         <h1>Time do next steps!</h1>

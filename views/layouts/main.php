@@ -32,7 +32,7 @@ AppAsset::register($this);
     <div class="wrap">
         <?php
             NavBar::begin([
-                'brandLabel' => 'Project X',
+                'brandLabel' => 'Sportimer',
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'class' => 'navbar-inverse navbar-fixed-top',
@@ -75,13 +75,13 @@ AppAsset::register($this);
                         'items'=>[
                          
                           ['label' => 'Accounts', 'url' => ['/user/account/index']],
-                          ['label' => 'Categories', 'url' => ['/categories/index']],
+                          ['label' => 'Categories', 'url' => ['/article/categories/index']],
                            ['label' => 'Media', 'url' => ['/media/media/index']],
                          
                         ]
                         ],
                    
-                    ['label' => 'News', 'url' => ['/categories/list']],
+                    ['label' => 'News', 'url' => ['/article/categories/list']],
                     ['label' => 'Gallery', 'url' => ['/media/media/list']],
                     ['label' => 'Profile', 'url' => ['/site/profile'] , 'visible' =>!Yii::$app->user->isGuest],
                     ['label' => 'Search', 'url' => ['/search/search']],
@@ -126,7 +126,7 @@ AppAsset::register($this);
                 </div>
 </div>
                 <div class="panel " >
-               <div class=" panel1 panel-heading ">Menu</div>
+               <div class=" panel3 panel-heading ">Menu</div>
                 <div class="panel-body">
  
 
@@ -148,7 +148,7 @@ AppAsset::register($this);
         [
           'label' => 'Categories', 
           'url' => ['/categories/index'],
-          'items'=>app\models\Categories::createMenu(0),
+          'items'=>app\modules\article\models\Categories::createMenu(0),
           
                  
         ],
@@ -187,7 +187,7 @@ AppAsset::register($this);
     <footer class="footer">
         <div class="container">
             
-            <p class="pull-left">&copy; Project X <?= date('Y') ?></p>
+            <p class="pull-left">&copy; Sportimer <?= date('Y') ?></p>
             <p class="pull-right"><?= Yii::powered() ?></p>
         </div>
     </footer>

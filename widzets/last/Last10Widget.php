@@ -2,8 +2,8 @@
 namespace app\widzets\last;
 use yii\base\Widget;
 use yii\helpers\Url;
-use app\models\Page;
-use app\models\Categories;
+use app\modules\article\models\Page;
+use app\modules\article\models\Categories;
 
 
 /*

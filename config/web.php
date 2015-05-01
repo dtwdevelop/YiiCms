@@ -4,7 +4,7 @@ $params = require(__DIR__ . '/params.php');
 $local =false;
 $config = [
     'id' => 'basic',
-     'defaultRoute' => 'categories/list',
+     'defaultRoute' => '/article/categories/list',
     'language' => 'en-US',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
@@ -98,7 +98,7 @@ $config = [
 //            'enableStrictParsing' => true,
 //            'suffix' => '.html',
             'rules' => [
-              'categories/<pages:\d+>' => 'categories/pages',
+              'categories/<pages:\d+>' => 'article/categories/pages',
                'gallery/list' =>'media/media/list',
                'gallery/page' => 'media/media/page',
                  'gallery/rating' => 'media/media/rating',
@@ -159,6 +159,9 @@ $config = [
      'modules' => [
         'media' => [
             'class' => 'app\modules\media\Media',
+        ],
+          'article' => [
+            'class' => 'app\modules\article\Article',
         ],
           'user' => [
             'class' => 'app\modules\user\User',

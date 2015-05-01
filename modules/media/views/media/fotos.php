@@ -10,8 +10,8 @@ use kartik\widgets\StarRating;
 <?php Pjax::begin(); ?>
 
 <div class="col-md-10">
-    <?php if(isset($sorter)){ echo LinkSorter::widget(['sort'=>$sorter]); }?> 
-     <div class="media ">
+    <?php if(isset($sorter)){ echo LinkSorter::widget(['sort'=>$sorter,'options' => ['class' => 'btn-group  nav nav-pills','style'=>'margin:5px']]); }?> 
+     <div class="media well">
               
    
  <?php foreach ($model as $cat): ?>
