@@ -10,7 +10,7 @@ use yii\grid\GridView;
 $this->title = Yii::t('app', 'Pages');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="page-index">
+<div class="page-index well">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -22,6 +22,10 @@ $this->params['breadcrumbs'][] = $this->title;
            <?= Html::a(Yii::t('app', 'Categories {modelClass}', [
     'modelClass' => '',
 ]), ['/article/categories/index'], ['class' => 'btn  btn-default']) ?>
+        
+            <?= Html::a(Yii::t('app', 'Tags {modelClass}', [
+    'modelClass' => '',
+]), ['/article/tag/index'], ['class' => 'btn  btn-warning']) ?>
     </p>
 
     <?= GridView::widget([

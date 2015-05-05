@@ -10,14 +10,14 @@ use kartik\widgets\FileInput;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="files-form col-md-6 well">
+<div class="files-form col-md-10 well">
 
 <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 <?= $form->errorSummary($model); ?>
     
      <?= $form->field($model, 'media_id')->widget(Select2::classname(), [
     'language' => 'en',
-    'data' => array_merge($media->getCategoryList(false)),
+    'data' => $media->getCategoryList(false),
     'options' => ['placeholder' => 'Parent Category ...'],
     'pluginOptions' => [
         'allowClear' => true

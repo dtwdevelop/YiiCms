@@ -10,7 +10,7 @@ $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Medias'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="medias-view">
+<div class="medias-view well">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -43,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
            ],
    
             'topic:html',
-            'url:url',
+          
             'meta',
             'meta_tags',
             'show',

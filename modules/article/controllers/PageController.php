@@ -9,6 +9,7 @@ use app\modules\article\models\PageSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\ForbiddenHttpException;
 
 /**
  * PageController implements the CRUD actions for Page model.
@@ -33,6 +34,9 @@ class PageController extends Controller
      */
     public function actionIndex()
     {
+          if (!\Yii::$app->user->can('adminCan')) {
+            throw new ForbiddenHttpException('Access denied');
+        }
         $searchModel = new PageSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -61,10 +65,15 @@ class PageController extends Controller
      */
     public function actionCreate()
     {
+          if (!\Yii::$app->user->can('adminCan')) {
+            throw new ForbiddenHttpException('Access denied');
+        }
         $model = new Page();
         $model2  = new Categories();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+          
+            $model->update();
             return $this->redirect(['view', 'id' => $model->page_id]);
         } else {
             return $this->render('create', [
@@ -82,6 +91,9 @@ class PageController extends Controller
      */
     public function actionUpdate($id)
     {
+          if (!\Yii::$app->user->can('adminCan')) {
+            throw new ForbiddenHttpException('Access denied');
+        }
         $model = $this->findModel($id);
         $model2  = new Categories();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -102,6 +114,9 @@ class PageController extends Controller
      */
     public function actionDelete($id)
     {
+          if (!\Yii::$app->user->can('adminCan')) {
+            throw new ForbiddenHttpException('Access denied');
+        }
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

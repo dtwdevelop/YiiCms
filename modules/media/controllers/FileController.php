@@ -110,7 +110,7 @@ class FileController extends Controller
              unlink(Yii::$app->params['smallFoto'].$small);
         }
         else{
-            throw new NotFoundHttpException('file not exits '.$big .'!');
+           // throw new NotFoundHttpException('file not exits '.$big .'!');
         }
     }
 

@@ -11,18 +11,18 @@ use yii\helpers\Url;
 $this->title = Yii::t('app', 'Users');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="users-index">
+<div class="users-index well">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
            <?= Html::a(Yii::t('app', ' {modelClass}', [
-    'modelClass' => 'Accounts',
+    'modelClass' => '<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Accounts ',
 ]), ['account/index'], ['class' => 'btn btn-success']) ?>
-        <?= Html::a(Yii::t('app', 'Create {modelClass}', [
-    'modelClass' => 'Users',
-]), ['account/create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', '{modelClass}', [
+    'modelClass' => '<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ad Account',
+]), ['account/create'], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?= GridView::widget([

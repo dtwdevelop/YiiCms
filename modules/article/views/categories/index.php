@@ -2,7 +2,8 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use kartik\widgets\DatePicker;
+//use kartik\widgets\DatePicker;
+use yii\jui\DatePicker;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\CategoriesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -10,7 +11,7 @@ use kartik\widgets\DatePicker;
 $this->title = Yii::t('app', 'Categories');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="categories-index">
+<div class="categories-index well">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -37,24 +38,22 @@ $this->params['breadcrumbs'][] = $this->title;
             'parent_id',
             'title',
             'about',
-            'url:url',
+           // 'url:url',
             // 'meta',
             // 'meta_tags',
             // 'pos',
              'show',
             // 'created',
               ['attribute'=>'created',
-            'format' => ['date', 'php:d-M-Y'],
+            'format' => ['date', 'yyyy-MM-dd'],
            // 'value' =>function($model){ return date('d-M-Y',strtotime($model->created));},
   
      'filter'=>DatePicker::widget([
-    'name' => 'check_issue_date', 
-    'value' => date('d-M-Y', strtotime('now')),
-    'options' => ['placeholder' => 'Select date'],
-    'pluginOptions' => [
-        'format' => 'd-M-Y',
-        'todayHighlight' => true
-    ]
+       'name'  => 'created',
+     'value'  => strtotime('now'),
+    
+    //'language' => 'ru',
+    'dateFormat' => 'yyyy-MM-dd',
 ])
                 ],
             // 'view',

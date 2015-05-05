@@ -12,7 +12,7 @@ $this->title = Yii::t('app', 'Create {modelClass}', [
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Files'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="files-create">
+<div class="files-create well">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

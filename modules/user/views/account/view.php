@@ -10,8 +10,8 @@ use yii\widgets\DetailView;
 $this->title = $model->name;
 
 ?>
-<div class="profile-view col-md-8">
-    <a class="btn btn-primary" href="<?php echo Url::to('/user/account/index.html'); ?>">Back</a>
+<div class="profile-view col-md-10 well">
+        <?= Html::a(Yii::t('app', 'Back'), ['index'], ['class' => 'btn btn-primary']) ?>
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -25,7 +25,7 @@ $this->title = $model->name;
             ],
         ]) ?>
            <?= Html::a(Yii::t('app', 'Create {modelClass}', [
-    'modelClass' => 'Accounts',
+    'modelClass' => 'Account',
 ]), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 

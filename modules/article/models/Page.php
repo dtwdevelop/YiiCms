@@ -5,6 +5,7 @@ namespace app\modules\article\models;
 use Yii;
 use app\modules\article\models\Tags;
 use app\modules\article\models\Categories;
+use yii\helpers\Url;
 /**
  * This is the model class for table "in_page".
  *
@@ -36,6 +37,11 @@ class Page extends \yii\db\ActiveRecord
            $this->created =  new Expression('NOW()');
             $this->update =  new Expression('NOW()');
             $this->view=1;
+          
+           $this->url='http://';
+        }
+        else{
+         $this->url = Url::base(true).'/categories/'.$this->page_id;
         }
         return parent::beforeValidate();
     }
@@ -53,7 +59,13 @@ class Page extends \yii\db\ActiveRecord
         return parent::afterDelete();
     }
      public function afterSave($insert,$changedAttributes) {
+         
         parent::afterSave($insert,$changedAttributes);
+         
+          
+           
+        
+       
        $tag = new Tags();
        
        $tag->updateFrequency($this->oldTag, $this->meta_tags);
@@ -62,6 +74,8 @@ class Page extends \yii\db\ActiveRecord
 
         
     }
+    
+    
     public static function findCategory($parent){
          
        $cat = Categories::findOne(['category_id'=>$parent]);
@@ -75,7 +89,7 @@ class Page extends \yii\db\ActiveRecord
         return [
             [['category_id', 'title', 'topic', 'url', 'meta', 'meta_tags', 'show',  'view'], 'required'],
             [['category_id', 'show', 'view'], 'integer'],
-            [['created', 'update'], 'safe'],
+            [['created', 'update','url'], 'safe'],
             [['title', 'topic', 'url', 'meta', 'meta_tags'], 'string', 'max' => 255]
         ];
     }

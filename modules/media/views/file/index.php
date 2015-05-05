@@ -10,7 +10,7 @@ use yii\grid\GridView;
 $this->title = Yii::t('app', 'Files');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="files-index">
+<div class="files-index well">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

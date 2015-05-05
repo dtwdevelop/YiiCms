@@ -7,7 +7,7 @@ use yii\helpers\Url;
 use app\modules\article\models\Page;
 ?>
 
-<?php Pjax::begin(); ?>
+<?php Pjax::begin(['id'=>'p']); ?>
 
 <div class="col-md-10">
     <?php if(isset($sorter)){ echo LinkSorter::widget(['sort'=>$sorter,'options' => ['class' => 'btn-group btn-link  nav nav-pills','style'=>'margin:5px']]); }?> 
@@ -20,9 +20,9 @@ use app\modules\article\models\Page;
                     
                 </div>
                <?php if($widget != true): ?>
-               <div><a class="btn btn-default btn-sm" data-pjax="0" href="<?=Url::to('/categories/'.$cat['page_id'])?>">Read more ..</a></div>
+               <div><a class="btn btn-default btn-sm" data-pjax="1" href="<?=Url::to('/categories/'.$cat['page_id'])?>">Read more ..</a></div>
                <?php else: ?>
-               <div><a class="btn btn-default btn-sm" data-pjax="0" href="<?=Url::to('/article/categories/list')?>">Back ..</a></div>
+               <div><a class="btn btn-default btn-sm" data-pjax="1" href="<?=Url::to('/article/categories/list')?>">Back ..</a></div>
 
                <?php endif;?>
               
@@ -37,6 +37,5 @@ use app\modules\article\models\Page;
      </div>
 <?php endforeach; ?>
 
-<?= LinkPager::widget(['pagination' => $pages]) ?>
 </div>
 <?php Pjax::end(); ?>

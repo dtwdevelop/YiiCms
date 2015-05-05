@@ -27,7 +27,7 @@ use kartik\widgets\Select2;
 
     <?= $form->field($model, 'topic')->textarea(['rows' => 8,'class'=>'editor']) ?>
 
-    <?= $form->field($model, 'url')->textInput(['maxlength' => 255]) ?>
+    <?php  // $form->field($model, 'url')->textInput(['maxlength' => 255]) ?>
 
     
 

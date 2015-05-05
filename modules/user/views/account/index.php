@@ -10,16 +10,16 @@ use yii\grid\GridView;
 $this->title = Yii::t('app', 'Accounts');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="profile-index">
+<div class="profile-index col-md-10 well">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-           <?= Html::a(Yii::t('app', 'Users {modelClass}', [
-    'modelClass' => '',
-]), ['/user/profile/index'], ['class' => 'btn btn-success']) ?>
-        <?= Html::a(Yii::t('app', 'Create {modelClass}', [
+           <?= Html::a(Yii::t('app', '{modelClass}  Users', [
+    'modelClass' => '<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>',
+]), ['/user/profile/index'], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('app', '<span class="glyphicon glyphicon-user" aria-hidden="true"></span> Create {modelClass}', [
     'modelClass' => 'Accounts',
 ]), ['create'], ['class' => 'btn btn-success']) ?>
     </p>

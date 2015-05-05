@@ -10,7 +10,7 @@ use yii\grid\GridView;
 $this->title = Yii::t('app', 'Media');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="medias-index">
+<div class="medias-index well">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

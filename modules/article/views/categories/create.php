@@ -12,7 +12,7 @@ $this->title = Yii::t('app', 'Create {modelClass}', [
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Categories'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="categories-create col-md-7">
+<div class="categories-create col-md-10 well">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

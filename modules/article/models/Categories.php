@@ -42,14 +42,16 @@ class Categories extends \yii\db\ActiveRecord
             $this->created =  new Expression('NOW()');
             $this->pos = 0;
             $this->view =1;
+            $this->url='http://';
             
         }
         else{
             $this->created= $this->created;
             $this->view  =1;
+            $this->url = Url::base(true).'/categories/'.$this->category_id;
         }
         $title = $this->title;
-        $this->url = strtolower($title);
+       // $this->url = strtolower($title);
         return parent::beforeValidate();
     }
     /*

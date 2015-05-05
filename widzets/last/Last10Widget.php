@@ -22,7 +22,7 @@ class Last10Widget extends Widget
     public function init()
     {
 //        $this->model = Page::find(['show'=>1])->limit($this->limit)->all();
-        $this->model = Categories::find(['show'=>1])->limit($this->limit)->all();
+        $this->model = Page::find(['show'=>1])->limit($this->limit)->all();
         
     }
 

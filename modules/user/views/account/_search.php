@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="profile-search">
+<div class="profile-search well">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],

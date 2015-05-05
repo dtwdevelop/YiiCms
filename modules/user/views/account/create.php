@@ -12,14 +12,15 @@ $this->title = Yii::t('app', 'Create {modelClass}', [
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Accounts'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="profile-create">
+<div class="profile-creates col-md-10 well">
  
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?= $this->render('_form', [
+    <?=  $this->render('_form', [
         'model' => $model,
         'model2' => $model2
            
     ]) ?>
 
 </div>
+

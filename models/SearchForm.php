@@ -16,7 +16,7 @@ use yii\base\Model;
 class SearchForm extends Model {
     public $q;
     public  $type;
-    public static $types = ['1'=>'User','2'=>'Category','3'=>'Media'];
+    public static $types = ['1'=>'User','2'=>'Article','3'=>'Media'];
      public function rules()
     {
         return [

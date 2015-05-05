@@ -2,8 +2,8 @@
 
 namespace app\controllers;
 
-use app\models\Categories;
-use app\models\Page;
+use app\modules\article\models\Categories;
+use app\modules\article\models\Page;
 use app\modules\user\models\Profile;
 use app\modules\media\models\Medias;
 use app\models\SearchForm;
@@ -27,71 +27,75 @@ class SearchController extends \yii\web\Controller {
             $query = QueryParser::parse($find, 'UTF-8');
             $index = Lucene::open(Yii::$app->params['index']);
             $hits = $index->find($query);
+            $request = Yii::$app->request;
+            if ($request->isAjax) {
 
-
-            return $this->render('search', ['model' => $search, 'rezult' => $hits]);
+                return $this->renderAjax('search', ['model' => $search, 'rezult' => $hits]);
+            } else {
+                return $this->render('search', ['model' => $search, 'rezult' => $hits]);
+            }
         } else {
             return $this->render('search', ['model' => $search, 'rezult' => null]);
         }
     }
 
-    public function Create($type=1) {
-    $index = Lucene::create(Yii::$app->params['index']);
-        switch ($type){
-            case 1:{
-                $model = Profile::find()->all();
-                if ($model !== null) {
-            foreach ($model as $val) {
-                $document = new Document();
-                $document->addField(Field::unIndexed('se_id', $val->profile_id));
-                $document->addField(Field::text('title', $val->name));
-                $document->addField(Field::unStored('date', $val->created));
+    public function Create($type = 1) {
+        $index = Lucene::create(Yii::$app->params['index']);
+        switch ($type) {
+            case 1: {
+                    $model = Profile::find()->all();
+                    if ($model !== null) {
+                        foreach ($model as $val) {
+                            $document = new Document();
+                            $document->addField(Field::unIndexed('se_id', $val->profile_id));
+                            $document->addField(Field::text('title', $val->name));
+                            $document->addField(Field::unStored('date', $val->created));
 
-                $index->addDocument($document);
-            }
-        }
-                break;
-            }
-            case 2:{
-                 $categories = Categories::find()->all();
-                  if ($categories !== null) {
-            foreach ($categories as $cat) {
-                $document = new Document();
-                $document->addField(Field::unIndexed('se_id', $cat->category_id));
-                $document->addField(Field::text('title', $cat->title));
-                $document->addField(Field::unStored('date', $cat->created));
-                $index->addDocument($document);
-            }
-        }
-                break;
-            }
-             case 3:{
-                 $media = Medias::find()->all();
-                  if ($media !== null) {
-            foreach ($media as $cat) {
-                $document = new Document();
-                $document->addField(Field::unIndexed('se_id', $cat->media_id));
-                $document->addField(Field::text('title', $cat->title));
-                $document->addField(Field::unStored('date', $cat->created));
-                $index->addDocument($document);
-            }
-        }
-                break;
-            }
-        default :{
-             $model = Profile::find()->all();
-              foreach ($model as $val) {
-                $document = new Document();
-                $document->addField(Field::unIndexed('id', $val->profile_id));
-                $document->addField(Field::text('title', $val->name));
-                $document->addField(Field::unStored('date', $val->created));
+                            $index->addDocument($document);
+                        }
+                    }
+                    break;
+                }
+            case 2: {
+                    $categories = Page::find()->all();
+                    if ($categories !== null) {
+                        foreach ($categories as $cat) {
+                            $document = new Document();
+                            $document->addField(Field::unIndexed('se_id', $cat->page_id));
+                            $document->addField(Field::text('title', $cat->title));
+                            $document->addField(Field::unStored('date', $cat->created));
+                            $index->addDocument($document);
+                        }
+                    }
+                    break;
+                }
+            case 3: {
+                    $media = Medias::find()->all();
+                    if ($media !== null) {
+                        foreach ($media as $cat) {
+                            $document = new Document();
+                            $document->addField(Field::unIndexed('se_id', $cat->media_id));
+                            $document->addField(Field::text('title', $cat->title));
+                            $document->addField(Field::text('picture', $cat->picture));
+                            $document->addField(Field::unStored('date', $cat->created));
+                            $index->addDocument($document);
+                        }
+                    }
+                    break;
+                }
+            default : {
+                    $model = Profile::find()->all();
+                    foreach ($model as $val) {
+                        $document = new Document();
+                        $document->addField(Field::unIndexed('id', $val->profile_id));
+                        $document->addField(Field::text('title', $val->name));
+                        $document->addField(Field::unStored('date', $val->created));
 
-                $index->addDocument($document);
-            }
-               break;
-        
+                        $index->addDocument($document);
+                    }
+                    break;
+                }
         }
-     }
         $index->optimize();
         $index->commit();
         $total = $index->numDocs();

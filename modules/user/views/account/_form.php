@@ -9,7 +9,7 @@ use kartik\widgets\SwitchInput;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="profile-form col-md-6 well">
+<div class="profile-forms ">
    
     <?php $form = ActiveForm::begin(); ?>
 

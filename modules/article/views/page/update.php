@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Pages'), 'url' => ['
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->page_id]];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 ?>
-<div class="page-update col-md-7">
+<div class="page-update col-md-10 well">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

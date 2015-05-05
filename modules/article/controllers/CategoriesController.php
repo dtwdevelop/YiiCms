@@ -20,6 +20,7 @@ use yii\data\ActiveDataProvider;
 class CategoriesController extends Controller
 {
     public $widzet=false; 
+  
     public function behaviors()
     {
         return [
@@ -38,6 +39,9 @@ class CategoriesController extends Controller
      */
     public function actionIndex()
     {
+          if (!\Yii::$app->user->can('adminCan')) {
+            throw new ForbiddenHttpException('Access denied');
+        }
         $searchModel = new CategoriesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -66,6 +70,12 @@ class CategoriesController extends Controller
      $model = $provider->getModels();
      $pages = $provider->getPagination();
        $this->widzet=true;
+         Yii::$app->view->params['article'] = 'widzet';
+        $request = Yii::$app->request;
+        if($request->isAjax){
+            
+           return  $this->renderAjax('page',['pages'=>$pages,'model'=>$model,"widget"=>$this->widzet]);
+      }
        return  $this->render('pages',['pages'=>$pages,'model'=>$model,"widget"=>$this->widzet]);
     }
     
@@ -111,11 +121,14 @@ class CategoriesController extends Controller
        
     ],
 ]);
-   
+     Yii::$app->view->params['article'] = 'widzet';
      $model = $provider->getModels();
      $pages = $provider->getPagination();
-     
-     
+     $request = Yii::$app->request;
+        if($request->isAjax){
+            
+           return  $this->renderAjax('pages',['pages'=>$pages,'model'=>$model,"widget"=>$this->widzet]);
+      }
        return  $this->render('pages',['pages'=>$pages,'model'=>$model,'sorter'=>$sort,"widget"=>$this->widzet]);
     }
 
@@ -138,9 +151,13 @@ class CategoriesController extends Controller
      */
     public function actionCreate()
     {
+          if (!\Yii::$app->user->can('adminCan')) {
+            throw new ForbiddenHttpException('Access denied');
+        }
         $model = new Categories();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+             $model->update();
             return $this->redirect(['view', 'id' => $model->category_id]);
         } else {
             return $this->render('create', [
@@ -157,6 +174,7 @@ class CategoriesController extends Controller
      */
     public function actionUpdate($id)
     {
+        
           if (!\Yii::$app->user->can('adminCan')) {
             throw new ForbiddenHttpException('Access denied');
         }

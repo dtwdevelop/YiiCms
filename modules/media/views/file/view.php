@@ -11,7 +11,7 @@ $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Fotos'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="files-view">
+<div class="files-view well">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
            ],
            
             'topic',
-            'url:url',
+           
             'meta',
             'meta_tags',
             'show',

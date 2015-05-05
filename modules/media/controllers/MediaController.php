@@ -176,6 +176,11 @@ class MediaController extends Controller
 ]);
     $model = $provider->getModels();
      $pages = $provider->getPagination();
+      $request = Yii::$app->request;
+       if($request->isAjax){
+            
+           return  $this->renderPartial('fotos',['pages'=>$pages,'model'=>$model,'sorter'=>$sort,'rating'=>$rating]);
+      }
      return  $this->render('fotos',['pages'=>$pages,'model'=>$model,'sorter'=>$sort,'rating'=>$rating]);
     }
 
